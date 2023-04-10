@@ -9,7 +9,7 @@ DEP = $(OBJ)/main.o $(OBJ)/Window.o
 CFLAGS = -Wall -Wextra
 
 execute:	$(BIN)/main.exe
-	./bin/main.exe &
+	./bin/main.exe
 	
 
 $(BIN)/main.exe:	$(DEP)

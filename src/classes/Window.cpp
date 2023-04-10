@@ -82,6 +82,48 @@ class Window{
                 this->setPixel(x,y);
             }
         }
+        
+        void bresenham(double xi,double yi, double xf , double yf, unsigned char r,unsigned char g,unsigned char b,unsigned char alpha){
+            SDL_SetRenderDrawColor(this->renderer,r,g,b,alpha);
+            bresenham(xi,yi,xf,yf);
+        }
+
+        void bresenham(double xi,double yi, double xf , double yf){
+            double dx,dy,dx2,dy2,p,aux;
+            int x,y;
+            bool swap=0;
+            
+            dx = xf-xi;
+            dy= yf-yi;
+
+            dx2 = 2*dx;
+            dy2 = 2*dy;
+
+            p = -dx +dy2;
+            x =round(xi);
+            y=round(yi);
+
+            for (int s=0;s<abs(dx);s++){
+                if (swap){
+                    this->setPixel(x,y);  
+                }else{
+
+                    this->setPixel(y,x);  
+                }
+                x++;
+                if (p>=0){
+                    y++;
+                    p = p-dx2+dy2;
+                }else{
+                    p=p+dy2;
+                }
+            }
+        }
+
+        void ddaLine(double xi,double yi, double xf, double yf, unsigned char r,unsigned char g,unsigned char b,unsigned char alpha){
+            SDL_SetRenderDrawColor(this->renderer,r,g,b,alpha);
+            this->ddaLine(xi,yi,xf,yf);
+        }
 
         void ddaLine(double xi,double yi, double xf, double yf){
             double dx,dy,steps_x,steps_y;
