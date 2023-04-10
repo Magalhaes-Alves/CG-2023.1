@@ -10,10 +10,11 @@ CFLAGS = -Wall -Wextra
 
 execute:	$(BIN)/main.exe
 	./bin/main.exe &
-	rm $(OBJ)/*
+	
 
 $(BIN)/main.exe:	$(DEP)
-	$(CC) $(CFLAGS) -o $(BIN)/main.exe $(DEP)  -lSDL2
+	$(CC) $(CFLAGS) -o $(BIN)/main.exe $(OBJ)/*.o  -lSDL2
+	rm $(OBJ)/*
 
 $(OBJ)/main.o:	$(SRC)/main.cpp 
 	$(CC) $(CFLAGS) -c $(SRC)/main.cpp -o $(OBJ)/main.o

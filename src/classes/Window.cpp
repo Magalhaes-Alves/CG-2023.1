@@ -83,6 +83,35 @@ class Window{
             }
         }
 
+        void ddaLine(double xi,double yi, double xf, double yf){
+            double dx,dy,steps_x,steps_y;
+            int steps,x,y;
+
+            dx = xf -xi;
+            dy = yf-yi;
+
+            steps = abs(dx);
+
+            if (steps ==0){
+                this->setPixel(xi,yi);
+                return;
+            }
+
+            if (fabs(dy)> fabs(dx)){
+                steps=abs(dy);
+            }
+
+            steps_x = dx/steps;
+            steps_y = dy/steps;
+
+            for (int s=0;s<steps;s++){
+                x = round(xi +s*steps_x);
+                y = round(yi +s*steps_y);
+                this->setPixel(x,y);
+            }
+
+        }
+
         void drawLine(double xi, double yi, double xf,double yf){
             int x,y;
             double dy,dx,a,vy,aux;
