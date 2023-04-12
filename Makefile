@@ -2,7 +2,7 @@
 #Variaveis para ajudar na compilação
 SRC = ./src
 CLASS = ./src/classes
-OBJ = ./obj
+OBJ = ./src/obj
 BIN = ./bin
 CC = g++
 DEP = $(OBJ)/main.o $(OBJ)/Window.o
