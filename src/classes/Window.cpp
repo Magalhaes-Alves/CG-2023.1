@@ -126,28 +126,20 @@ class Window{
             y=round(yi);
 
             for (int s=0;s<abs(dx);s++){
-
-                this->setPixel(x,y);
                 if (!swap){
-                    x++;
-                    if (p>=0){
-                        y++;
-                        p = p-dx2+dy2;
-                    }else{
-                        p=p+dy2;
-                    }
+                    this->setPixel(x,y);
                 }else{
+                    this->setPixel(y,x);    
+                }
+                x++;
+                if (p>=0){
                     y++;
-                    if (p>=0){
-                        x++;
-                        p = p-dx2+dy2;
-                    }else{
-                        p=p+dy2;
-                    }
+                    p = p-dx2+dy2;
+                }else{
+                    p=p+dy2;
                 }
 
-                }
-
+            }
         }
 
         void ddaLine(double xi,double yi, double xf, double yf, unsigned char r,unsigned char g,unsigned char b,unsigned char alpha){

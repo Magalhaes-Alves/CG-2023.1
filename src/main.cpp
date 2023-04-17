@@ -28,7 +28,7 @@ int main(void)
     yf = 100;
 
     janela->ddaLine(xi,yi,xf,yf,255,0,0,255);
-    janela->bresenham(xi+20,yi+20,xf+20,yf+20,0,255,0,255);
+    janela->bresenham(xi,yi,xf,yf,0,255,0,255);
 
 
     janela->show();
