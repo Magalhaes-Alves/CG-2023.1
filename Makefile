@@ -25,10 +25,13 @@ $(OBJ)/%.o:	$(CLASS)/%.cpp
 #$(OBJ)/Window.o:	$(CLASS)/Window.cpp
 #	$(CC) -c $(CLASS)/Window.cpp -o $(OBJ)/Window.o 
 
-	
+environment:
+	sudo apt install libsdl2-dev
+	mkdir $(OBJ)
+
 clean:
-	@rm ./bin/*
-	@rm ./obj/*
+	@rm $(BIN)/*
+	@rm $(OBJ)/*
 
 #compile:
 #	g++ -o bin/main.exe src/main.cpp src/classes/Window.cpp pkg-config --cflags --libs sdl2
