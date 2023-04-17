@@ -93,8 +93,30 @@ class Window{
             int x,y;
             bool swap=0;
             
+            
+            if(xf<xi){
+                //Trocar x
+                aux = xi;
+                xi=xf;
+                xf =aux;
+                //Troca y
+                aux = yi;
+                yi=yf;
+                xf =aux;
+            }
+
             dx = xf-xi;
             dy= yf-yi;
+            cout<< dx <<" "<< dy<<"\n";
+
+            //Verificar em qual eixo deverá ser iterado
+            if (dy>dx){
+                aux = dy;
+                dy = dx;
+                dx = aux;
+                swap =1;
+
+            }
 
             dx2 = 2*dx;
             dy2 = 2*dy;
@@ -104,20 +126,28 @@ class Window{
             y=round(yi);
 
             for (int s=0;s<abs(dx);s++){
-                if (swap){
-                    this->setPixel(x,y);  
-                }else{
 
-                    this->setPixel(y,x);  
-                }
-                x++;
-                if (p>=0){
-                    y++;
-                    p = p-dx2+dy2;
+                this->setPixel(x,y);
+                if (!swap){
+                    x++;
+                    if (p>=0){
+                        y++;
+                        p = p-dx2+dy2;
+                    }else{
+                        p=p+dy2;
+                    }
                 }else{
-                    p=p+dy2;
+                    y++;
+                    if (p>=0){
+                        x++;
+                        p = p-dx2+dy2;
+                    }else{
+                        p=p+dy2;
+                    }
                 }
-            }
+
+                }
+
         }
 
         void ddaLine(double xi,double yi, double xf, double yf, unsigned char r,unsigned char g,unsigned char b,unsigned char alpha){

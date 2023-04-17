@@ -9,11 +9,6 @@ int main(void)
 {
     Window *janela = new Window(500,500,"CG");
 
-    int height,width;
-    height = janela->getHeight();
-    width = janela->getWidth();
-
-
     /* // Maior 45°
     janela->bresenham(50,50,150,450);
 
@@ -33,7 +28,7 @@ int main(void)
     yf = 100;
 
     janela->ddaLine(xi,yi,xf,yf,255,0,0,255);
-    janela->bresenham(xi,yi+20,xf,yf+20,0,255,0,255);
+    janela->bresenham(xi+20,yi+20,xf+20,yf+20,0,255,0,255);
 
 
     janela->show();
