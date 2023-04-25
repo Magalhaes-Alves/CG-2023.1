@@ -14,7 +14,6 @@ execute:	$(BIN)/main.exe
 
 $(BIN)/main.exe:	$(DEP)
 	$(CC) $(CFLAGS) -o $(BIN)/main.exe $(OBJ)/*.o  -lSDL2
-	rm $(OBJ)/*
 
 $(OBJ)/main.o:	$(SRC)/main.cpp 
 	$(CC) $(CFLAGS) -c $(SRC)/main.cpp -o $(OBJ)/main.o
