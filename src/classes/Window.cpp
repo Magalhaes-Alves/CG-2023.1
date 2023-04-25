@@ -90,55 +90,50 @@ class Window{
 
         void bresenham(double xi,double yi, double xf , double yf){
             double dx,dy,dx2,dy2,p,aux;
-            int x,y;
+            int x,y,x_inc,y_inc;
             bool swap=0;
             
-            
-            if(xf<xi){
-                //Trocar x
-                aux = xi;
-                xi=xf;
-                xf =aux;
-                //Troca y
-                aux = yi;
-                yi=yf;
-                xf =aux;
-            }
-
             dx = xf-xi;
-            dy= yf-yi;
-            cout<< dx <<" "<< dy<<"\n";
+            dy = yf-yi;
+            x_inc = (dx< 0)? -1:1;
+            y_inc = (dy<0)? -1:1;
 
-            //Verificar em qual eixo deverá ser iterado
+            dx = abs(dx);
+            dy= abs(dy);
+
             if (dy>dx){
-                aux = dy;
-                dy = dx;
-                dx = aux;
+                aux = dx;
+                dx = dy;
+                dy =aux;
                 swap =1;
-
             }
-
+            
             dx2 = 2*dx;
             dy2 = 2*dy;
-
+            
             p = -dx +dy2;
-            x =round(xi);
-            y=round(yi);
+
+            x = xi;
+            y = yi;
 
             for (int s=0;s<abs(dx);s++){
-                if (!swap){
-                    this->setPixel(x,y);
-                }else{
-                    this->setPixel(y,x);    
-                }
-                x++;
-                if (p>=0){
-                    y++;
+                this->setPixel(x,y);
+                
+                if (swap && (p>=0)){
+                    x=x + x_inc;
+                    y=y+y_inc;
                     p = p-dx2+dy2;
-                }else{
-                    p=p+dy2;
+                }else if(swap &&(p<0)){
+                    y = y+ y_inc;
+                    p = p+dy2;
+                }else if (!swap && (p>=0)){
+                    x=x+x_inc;
+                    y = y+y_inc;
+                    p = p-dx2+dy2;
+                }else if(!swap && (p<0)){
+                    x=x+x_inc;
+                    p = p+dy2;
                 }
-
             }
         }
 
