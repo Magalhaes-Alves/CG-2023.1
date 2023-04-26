@@ -184,6 +184,8 @@ class Window{
             }else{
                 this->bresenham(xi,yi,xf,yf);
             }
+
+            SDL_RenderPresent(this->renderer);
         }
 
         void show(){
