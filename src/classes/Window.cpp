@@ -171,44 +171,11 @@ class Window{
 
         }
 
-        void drawLine(double xi, double yi, double xf,double yf){
-            int x,y;
-            double dy,dx,a,vy,aux;
-            bool trocou;
-
-            dx = xf-xi;
-            dy = yf-yi;
-
-            if (dx ==0 && dy ==0){
-                this->setPixel(xi,yi);
-                return;
-            }
-            trocou=0;
-            if (fabs(dy)> fabs(dx)){
-                aux = dx;
-                dx = dy;
-                dy=aux;
-                aux =xi;
-                xi=yi;
-                yi=aux;
-                trocou =1;
-            }
-            a = dy/dx;
-
-            for (int vx= 0; vx<abs(dx);vx++){
-
-                if (dx<0){
-                    vx = -vx;
-                }
-                vy=a*vx;
-                x= round(xi+vx);
-                y= round(yi+vy);
-                
-                if (trocou){
-                    this->setPixel(y,x);
-                }else{
-                    this->setPixel(x,y);
-                }
+        void drawLine(double xi, double yi, double xf,double yf,bool alg=0){
+            if (alg){
+                this->ddaLine(xi,yi,xf,yf);
+            }else{
+                this->bresenham(xi,yi,xf,yf);
             }
         }
 
