@@ -76,10 +76,17 @@ class Window{
         }
 
         void sinDraw(double amplitude,double frequency){
-            int y;
-            for (int x=0;x<this->getWidth();x++){
+            int x_ant,y_ant,y;
+
+            x_ant=0;
+            y_ant =(int) this->getHeight()/2 + amplitude*sin(x_ant*frequency);
+            for (int x=1;x<this->getWidth();x++){
                 y = (int) this->getHeight()/2 + amplitude*sin(x*frequency);
-                this->setPixel(x,y);
+
+                this->drawLine(x_ant,y_ant,x,y);
+
+                x_ant = x;
+                y_ant = y;
             }
         }
         
