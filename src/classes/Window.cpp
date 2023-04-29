@@ -188,6 +188,36 @@ class Window{
             SDL_RenderPresent(this->renderer);
         }
 
+        void drawCircle(double xc, double yc, double r){
+            int x,y,p;
+            
+            x= 0;
+            y=r;
+
+            p = 5/4 -r;
+
+            for (int k = 0;x<y;k++){
+
+                this->setPixel(x+xc,y+yc);
+                this->setPixel(y+xc,x+yc);
+                this->setPixel(y+xc,-x+yc);
+                this->setPixel(x+xc,-y+yc);
+                this->setPixel(-x+xc,-y+yc);
+                this->setPixel(-y+xc,-x+yc);
+                this->setPixel(-y+xc,x+yc);
+                this->setPixel(-x+xc,y+yc);
+                
+                x++;
+                if (p<0){
+                    p = p+2*x+1;
+                }else{
+                    y--;
+                    p = p+2*x+1-2*y;
+                }
+            }
+        
+
+        }
         void show(){
             SDL_RenderPresent(this->renderer);
             this->isRunning=true;

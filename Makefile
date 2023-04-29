@@ -21,8 +21,10 @@ $(OBJ)/main.o:	$(SRC)/main.cpp
 $(OBJ)/%.o:	$(CLASS)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#$(OBJ)/Window.o:	$(CLASS)/Window.cpp
-#	$(CC) -c $(CLASS)/Window.cpp -o $(OBJ)/Window.o 
+# Comandos para cada teste:
+# circleTest - g++ -Wall -Wextra -std=c++17 -o ./bin/circle.exe src/classes/Window.cpp src/test/circleTest.cpp -lSDL2
+	
+	
 
 environment:
 	sudo apt install libsdl2-dev
