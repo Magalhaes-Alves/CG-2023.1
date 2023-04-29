@@ -22,9 +22,11 @@ $(OBJ)/%.o:	$(CLASS)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Comandos para cada teste:
-# circleTest - g++ -Wall -Wextra -std=c++17 -o ./bin/circle.exe src/classes/Window.cpp src/test/circleTest.cpp -lSDL2
-	
-	
+# circleTest - 
+#g++ -Wall -Wextra -std=c++17 -o ./bin/circle.exe src/classes/Window.cpp src/test/circleTest.cpp -lSDL2
+
+#ellipseTest	
+#g++ -Wall -Wextra -std=c++17 -o ./bin/ellipse.exe src/classes/Window.cpp src/test/ellipseTest.cpp -lSDL2	
 
 environment:
 	sudo apt install libsdl2-dev

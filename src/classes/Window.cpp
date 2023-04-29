@@ -215,8 +215,58 @@ class Window{
                     p = p+2*x+1-2*y;
                 }
             }
-        
+        }
 
+        void drawEllipse(double xc,double yc, double rx, double ry){
+            int rx2,ry2,twoRx2,twoRy2,p,x,y,px,py;
+
+            x=0;
+            y=ry;
+            rx2 = rx*rx;
+            ry2 = ry*ry;
+            twoRx2 = 2*rx2;
+            twoRy2 = 2*ry2;
+            px =0;
+            py = twoRx2*y;
+
+            p = round(ry2- (rx2*ry)+ (0.25*rx2));
+
+            while(px<py){
+                this->setPixel(x+xc,y+yc);
+                this->setPixel(-x+xc,y+yc);
+                this->setPixel(x+xc,-y+yc);
+                this->setPixel(-x+xc,-y+yc);
+
+                x++;
+                px =px+twoRy2;
+                if(p<0){
+                    p = p+ry2+px;
+                }else{
+                    y--;
+                    py = py -twoRx2;
+                    p = p + ry2+px-py;
+                }
+            }
+
+            p = round(ry2*(x+0.5)*(x+0.5)+rx2*(y-1)*(y-1)-rx2*ry2);
+
+            while(y>=0){
+                this->setPixel(x+xc,y+yc);
+                this->setPixel(-x+xc,y+yc);
+                this->setPixel(x+xc,-y+yc);
+                this->setPixel(-x+xc,-y+yc);
+                y--;
+                py = py - twoRx2;
+                if (p>0){
+                    p = p+rx2-py;
+                }else{
+                    x++;
+                    px = px + twoRy2;
+                    p=p+rx2-py+px;
+                }
+            }
+
+            
         }
         void show(){
             SDL_RenderPresent(this->renderer);
